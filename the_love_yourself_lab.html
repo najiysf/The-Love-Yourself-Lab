@@ -1,0 +1,101 @@
+<!-- this is a learning exprience, I'm getting used to new lang and the best way is through projects for me personally -->
+<!-- HTML = the structure -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- tell the browser what kind od text encoding-->
+
+<title>💞 The Love Yourself Lab 💞</title>
+<style>
+    /* we are not using CSS */
+   /*  this is about how the page looks from colrs, ftns & lyot */
+   body {
+    background-color:#201e1e;
+    color: #ffb6d9;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    padding-top: 100px;
+   }
+   
+   /* 
+   this upcoming piece is for the big title 
+   h1 means "style the main heading" */
+   h1 {
+    color: #ff6fa8;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+   }
+
+   #affirmation {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    opacity: 0;
+    transition: opacity 0.8 ease-in-out;
+   }
+
+   button {
+    background-color: #ff6fa8;
+    border: none;
+    padding: 15px 30px;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.5s;
+   }
+
+   button:hover {
+    background-color: #ff3f85;
+   }
+   /* button:hover means when the mouse is over the button */
+
+/* next 2 lines ends the CSS and the head section */
+</style>
+</head>
+<body>
+    <!-- back in HTML btw-->
+    <h1> ♡ Your Daily Affirmation ♡ </h1>
+    <!-- previous lines shows big heading "Your daily affirm"-->
+     <button onclick = "generateAffirmation()">✨ Give me an affirmation ✨ </button>
+     <!-- creates a button with the text "giv me affirm"-->
+      <p id="affirmation"></p>
+      <!-- creats an empty paragraph, 
+       id = "aff." gives it a name, so Javascript can find it and change the txt
+       this is where the affirmation will appear-->
+
+       <script>
+        // we are now using JavaScprt (js) 
+        const affirmations = [
+            "You are glowing with potential.",
+            "Your presence is a gift.",
+            "You are worthy and are becoming someone you're proud of.",
+            "Your future is filled of beautiful things.",
+            "You bring value to every space you enter."
+        ]
+        // const affirm = [...] creats a list (array)
+        // this is basically the database of all the generated sentences 
+
+        function generateAffirmation() {
+            const text = affirmations[Math.floor(Math.random()*affirmations.length)];
+            // affirmations.length -> how many affirms are in the list
+            // math.random() -> gives a rand num betwn 0 and 1
+            // math.floor -> rounds that down to a whole number 
+            // affirmations[num] -> picks a random affirmation from the list
+            // const text saves that chosen affirm into the variable named text
+            const element = document.getElementById("affirmation");
+            // document is the webpage
+            element.style.opacity = 0;
+            // doing this before changing the text so the fade-in looks good
+            setTimeout(()=> {
+                element.textContent= text;
+                element.style.opacity = 1;
+
+            }, 200);
+        }
+      
+        
+       </script>
+
+</body>
+
+</html>
